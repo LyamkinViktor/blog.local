@@ -18,7 +18,6 @@ class Router
         foreach ($arr as $key => $value) {
             $this->add($key, $value);
         }
-        //debug($this->routes);
     }
 
     /**
@@ -38,12 +37,8 @@ class Router
      */
     public function match(){
         $url = trim($_SERVER['REQUEST_URI'], '/');
-        //debug($url);
         foreach ($this->routes as $route => $params) {
-            //var_dump($route);
             if (preg_match($route, $url, $matches)) {
-                //debug($matches);
-                //var_dump($params);
                 $this->params = $params;
                 return true;
             }

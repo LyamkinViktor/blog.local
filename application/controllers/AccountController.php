@@ -6,11 +6,11 @@ use application\core\Controller;
 class AccountController extends Controller
 {
     public function loginAction () {
-        echo 'страница входа';
+        $this->view->render('Вход');
     }
 
     public function registerAction () {
-        echo 'страница регистрации';
+        $this->view->render('Регистрация');
     }
 
 }
