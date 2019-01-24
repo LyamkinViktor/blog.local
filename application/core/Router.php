@@ -56,11 +56,17 @@ class Router
      */
     public function run(){
         if ($this->match()) {
-            $controller = 'application\controllers\\' . ucfirst($this->params['controller']) . 'Controller.php';
-            if (class_exists($controller)) {
-                echo 'ok';
+            $patch = 'application\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
+            if (class_exists($patch)) {
+                $action = $this->params['action'] . 'Action';
+                if (method_exists($patch, $action)) {
+                    $controller = new $patch($this->params);
+                    $controller->$action();
+                } else {
+                    echo 'Не найден экшен: ' . $action;
+                }
             } else {
-                echo 'Не найден класс: ' . $controller;
+                echo 'Не найден контроллер: ' . $patch;
             }
         } else {
             echo 'маршрут не найден';
