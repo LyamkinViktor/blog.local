@@ -2,6 +2,8 @@
 
 namespace application\core;
 
+use application\core\View;
+
 class Router
 {
     protected $routes = [];
@@ -58,13 +60,13 @@ class Router
                     $controller = new $patch($this->params);
                     $controller->$action();
                 } else {
-                    echo 'Не найден экшен: ' . $action;
+                    View::errorCode(404);
                 }
             } else {
-                echo 'Не найден контроллер: ' . $patch;
+                View::errorCode(404);
             }
         } else {
-            echo 'маршрут не найден';
+            View::errorCode(404);
         }
     }
 }
