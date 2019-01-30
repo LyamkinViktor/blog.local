@@ -12,6 +12,12 @@
 
 <p>Главная страница</p>
 
+<?php foreach ($news as $var): ?>
+    <h3><?php echo $var['title']; ?></h3>
+    <p><?php echo $var['description']; ?></p>
+    <hr>
+<?php endforeach; ?>
+
 
 </body>
 </html>

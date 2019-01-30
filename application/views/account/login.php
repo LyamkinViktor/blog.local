@@ -11,12 +11,12 @@
 
 <h2>Вход</h2>
 
-<form>
+<form action="/account/login" method="post">
     Логин
-    <input type="text"><br>
+    <input type="text" name="login"><br>
     Пароль
-    <input type="text"><br>
-    <button>Войти</button>
+    <input type="text" name="password"><br>
+    <button type="submit" name="enter">Войти</button>
 </form>
 
 
